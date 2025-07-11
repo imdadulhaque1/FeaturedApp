@@ -1,28 +1,43 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import * as React from 'react';
+import { View } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import {
+  createStaticNavigation,
+  useNavigation,
+} from '@react-navigation/native';
+import { Button } from '@react-navigation/elements';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+function HomeScreen() {
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button onPress={() => navigation.navigate('Notifications')}>
+        Go to notifications
+      </Button>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+function NotificationsScreen() {
+  const navigation = useNavigation();
+
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button onPress={() => navigation.goBack()}>Go back home</Button>
+    </View>
+  );
+}
+
+const Drawer = createDrawerNavigator({
+  screens: {
+    Home: HomeScreen,
+    Notifications: NotificationsScreen,
   },
 });
 
-export default App;
+const Navigation = createStaticNavigation(Drawer);
+
+export default function App() {
+  return <Navigation />;
+}
