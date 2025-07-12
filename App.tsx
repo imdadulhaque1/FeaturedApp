@@ -7,8 +7,8 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 import { Button } from '@react-navigation/elements';
-import Icon from './src/components/icon/Icon';
-import MMKV from './src/utils/storage';
+import Icon from './src/shared/components/icon/Icon';
+import MMKV from './src/shared/utils/storage';
 
 function HomeScreen() {
   const navigation = useNavigation();
