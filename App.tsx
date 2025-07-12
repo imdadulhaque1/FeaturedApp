@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {
   createStaticNavigation,
   useNavigation,
 } from '@react-navigation/native';
 import { Button } from '@react-navigation/elements';
+import Icon from './src/components/icon/Icon';
 
 function HomeScreen() {
   const navigation = useNavigation();
@@ -15,6 +16,12 @@ function HomeScreen() {
       <Button onPress={() => navigation.navigate('Notifications')}>
         Go to notifications
       </Button>
+      <Icon />
+      <Text
+        style={{ fontSize: 25, color: 'black', fontFamily: 'WorkSans-Regular' }}
+      >
+        Featured App
+      </Text>
     </View>
   );
 }
